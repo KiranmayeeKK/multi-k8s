@@ -1,0 +1,13 @@
+# Specify a base image imagename:tag
+FROM node:14.14.0-alpine
+
+WORKDIR '/app'
+# copies everything from current working directory to the CWD of the docker
+COPY ./package.json ./
+# install some dependencies
+RUN npm install
+
+COPY ./ ./
+
+#Default command
+CMD ["npm", "run", "start"]
